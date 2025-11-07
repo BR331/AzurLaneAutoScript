@@ -841,40 +841,446 @@
             "help": ""
         }
     },
-    "StopCondition": {
-        "_info": {
-            "name": "停止条件",
-            "help": "触发以下任意条件后，停止任务"
-        },
-        "OilLimit": {
-            "name": "石油低于 X 后推迟",
-            "help": "石油过低时推迟任务，石油充足后继续出击"
-        },
-        "RunCount": {
-            "name": "出击次数大于 X 后停止",
-            "help": "每运行一次，次数减一，归零后停止任务\n0 表示不限制次数"
-        },
-        "MapAchievement": {
-            "name": "达成关卡成就后停止",
-            "help": "达成地图 100% 通关，达成三星通关，达成安全海域，\n或达成安全海域但不打三星后停止",
-            "non_stop": "否",
-            "100_percent_clear": "100%通关",
-            "map_3_stars": "100%通关 + 三星",
-            "threat_safe": "100%通关 + 三星 + 安全海域",
-            "threat_safe_without_3_stars": "100%通关 + 安全海域"
-        },
-        "StageIncrease": {
-            "name": "达成关卡成就后向前开荒",
-            "help": "自动开荒，需要保证队伍有足够的强度，需要保证队伍满足关卡属性限制，并设置\"达成关卡成就后停止\"\n例如，打开本选项，并选择\"地图通关\"，将在关卡100%通关后前往下一关卡\n支持自动开荒的地图：1-1至15-4，A1至A3，B1至B3，C1至C3，D1至D3，T1至T6，SP1至SP4"
-        },
-        "GetNewShip": {
-            "name": "获得新船后停止",
-            "help": ""
-        },
-        "ReachLevel": {
-            "name": "舰船升至 X 级后停止",
-            "help": "任意等级低于 X 的舰船升级至 X 级后停止\n0 表示不限制等级"
-        }
+    "WhenTaskQueueEmpty": {
+        "name": "当任务队列清空后",
+        "help": "无任务时关闭游戏，能在收菜期间降低 CPU 占用",
+        "stay_there": "停在原处",
+        "goto_main": "前往主界面",
+        "close_game": "关闭游戏"
+    }
+},
+"DropRecord": {
+    "_info": {
+        "name": "掉落记录",
+        "help": ""
+    },
+    "SaveFolder": {
+        "name": "掉落保存目录",
+        "help": ""
+    },
+    "AzurStatsID": {
+        "name": "AzurStat ID",
+        "help": "上传至 https://azur-stats.lyoko.io 时，声明的客户端 ID\n由随机字符组成，可随意修改"
+    },
+    "API": {
+        "name": "上传线路",
+        "help": "如果国内用户无法连接到 AzurStat，可以使用\"国内反向代理\"",
+        "default": "默认 (Cloudflare)",
+        "cn_gz_reverse_proxy": "国内反向代理 (广州)"
+    },
+    "ResearchRecord": {
+        "name": "科研截图",
+        "help": "",
+        "do_not": "无操作",
+        "save": "保存",
+        "upload": "上传",
+        "save_and_upload": "保存并上传"
+    },
+    "CommissionRecord": {
+        "name": "委托截图",
+        "help": "",
+        "do_not": "无操作",
+        "save": "保存",
+        "upload": "上传",
+        "save_and_upload": "保存并上传"
+    },
+    "CombatRecord": {
+        "name": "战斗掉落截图",
+        "help": "启用后会放缓结算时的点击速度\n在自律寻敌下不生效",
+        "do_not": "无操作",
+        "save": "保存"
+    },
+    "OpsiRecord": {
+        "name": "大世界掉落截图",
+        "help": "",
+        "do_not": "无操作",
+        "save": "保存",
+        "upload": "上传",
+        "save_and_upload": "保存并上传"
+    },
+    "MeowfficerBuy": {
+        "name": "指挥喵购买截图",
+        "help": "",
+        "do_not": "无操作",
+        "save": "保存"
+    },
+    "MeowfficerTalent": {
+        "name": "指挥喵天赋截图",
+        "help": "",
+        "do_not": "无操作",
+        "save": "保存",
+        "upload": "上传",
+        "save_and_upload": "保存并上传"
+    }
+},
+"Retirement": {
+    "_info": {
+        "name": "退役设置",
+        "help": ""
+    },
+    "RetireMode": {
+        "name": "退役模式",
+        "help": "若选择强化，强化材料不足时回退到一键退役",
+        "one_click_retire": "一键退役",
+        "enhance": "强化",
+        "old_retire": "传统退役"
+    }
+},
+"OneClickRetire": {
+    "_info": {
+        "name": "一键退役设置",
+        "help": "仅在 \"退役模式\" 设置为 \"一键退役\" 时生效"
+    },
+    "KeepLimitBreak": {
+        "name": "保留满星同名舰船",
+        "help": "没有满星的同名舰船时，保留几艘符合退役条件的同名舰船\n如果一键退役无法退役，请设置为 \"不保留\"",
+        "keep_limit_break": "保留满星所需",
+        "do_not_keep": "不保留"
+    }
+},
+"Enhance": {
+    "_info": {
+        "name": "强化设置",
+        "help": "仅在 \"退役模式\" 设置为 \"强化\" 时生效"
+    },
+    "ShipToEnhance": {
+        "name": "需要强化的舰船",
+        "help": "",
+        "all": "强化全部舰船",
+        "favourite": "仅强化常用舰船"
+    },
+    "Filter": {
+        "name": "强化过滤字符串",
+        "help": "格式: \"cv > bb > ...\"，\n留空则使用默认强化方式"
+    },
+    "CheckPerCategory": {
+        "name": "每分类强化数量",
+        "help": "每个舰船分类最多强化多少舰船，\n在战斗中的舰船会被跳过且不计入，\n优先判断是否有强化材料"
+    }
+},
+"OldRetire": {
+    "_info": {
+        "name": "传统退役设置",
+        "help": "仅在 \"退役模式\" 设置为 \"传统退役\" 时生效\n注意：传统退役基于角色稀有度，可能退役布里"
+    },
+    "N": {
+        "name": "退役白皮 ( N )",
+        "help": ""
+    },
+    "R": {
+        "name": "退役蓝皮 ( R )",
+        "help": ""
+    },
+    "SR": {
+        "name": "退役紫皮 ( SR )",
+        "help": ""
+    },
+    "SSR": {
+        "name": "退役金皮 ( SSR )",
+        "help": ""
+    },
+    "RetireAmount": {
+        "name": "退役数量",
+        "help": "",
+        "retire_all": "退役全部",
+        "retire_10": "退役10个"
+    }
+},
+"Campaign": {
+    "_info": {
+        "name": "关卡设置",
+        "help": ""
+    },
+    "Name": {
+        "name": "关卡名称",
+        "help": "例如 7-2, 12-4, D3, SP4，不区分大小写\n若关卡缺失，请等待更新"
+    },
+    "Event": {
+        "name": "活动名称",
+        "help": "自动选择至最新的活动",
+        "campaign_main": "主线图",
+        "coalition_20230323": "极地风暴",
+        "coalition_20240627": "欢迎来到童心学院",
+        "coalition_20250626": "迷彩都市的寻踪者",
+        "event_20200227_cn": "北境序曲",
+        "event_20200312_cn": "复刻斯图尔特的硝烟",
+        "event_20200326_cn": "微层混合",
+        "event_20200423_cn": "复刻苍红的回响",
+        "event_20200507_cn": "夜幕下的归途",
+        "event_20200521_cn": "穹顶下的圣咏曲",
+        "event_20200521_en": "Iris of Light and Dark Rerun",
+        "event_20200603_cn": "复刻峡湾间的反击",
+        "event_20200603_en": "Prelude under the Moon Rerun",
+        "event_20200611_en": "Skybound Oratorio",
+        "event_20200716_en": "Ink Stained Steel Sakura Rerun",
+        "event_20200723_cn": "永夜幻光",
+        "event_20200806_cn": "复刻最重要的宝物",
+        "event_20200820_cn": "复刻铁血音符誓言",
+        "event_20200903_en": "复刻峡湾间的星辰",
+        "event_20200917_cn": "复刻蝶海梦花",
+        "event_20201002_en": "Counterattack Within the Fjord",
+        "event_20201012_cn": "复刻划破海空之翼",
+        "event_20201029_cn": "激唱的UNIVERSE",
+        "event_20201126_cn": "假日航线",
+        "event_20201229_cn": "复刻负象限作战",
+        "event_20210121_cn": "复刻神圣的悲喜剧",
+        "event_20210225_cn": "复刻破晓冰华",
+        "event_20210225_tw": "北境序曲",
+        "event_20210325_cn": "复刻箱庭疗法",
+        "event_20210415_tw": "復刻圍剿施佩伯爵",
+        "event_20210422_cn": "复刻复兴的赞美诗",
+        "event_20210429_tw": "復刻墨染的鋼鐵之花",
+        "event_20210527_cn": "复刻镜位螺旋",
+        "event_20210527_tw": "微層混合",
+        "event_20210610_tw": "復刻夜幕下的歸途",
+        "event_20210624_cn": "复刻浮樱影华",
+        "event_20210624_tw": "穹頂下的聖詠曲",
+        "event_20210722_cn": "响彻碧海的偶像歌",
+        "event_20210819_cn": "复刻微层混合",
+        "event_20210916_cn": "复刻碧海光粼",
+        "event_20211028_cn": "复刻穹顶下的圣咏曲",
+        "event_20211028_tw": "復刻光與影的鳶尾之華",
+        "event_20211111_cn": "复刻杰诺瓦的焰火",
+        "event_20211125_cn": "复刻交汇世界的弧光",
+        "event_20211229_cn": "复刻逆转彩虹之塔",
+        "event_20220210_cn": "复刻北境序曲",
+        "event_20220224_cn": "复刻深度回音",
+        "event_20220310_tw": "復刻斯圖爾特的硝煙",
+        "event_20220324_cn": "复刻虚像构筑之塔",
+        "event_20220407_tw": "蒼紅的迴響(復刻)",
+        "event_20220414_cn": "复刻永夜幻光",
+        "event_20220428_cn": "复刻虹彩的终幕曲",
+        "event_20220526_cn": "复刻泠誓光庭",
+        "event_20220728_cn": "复刻雄鹰的叙事歌",
+        "event_20220818_cn": "复刻远汇点作战",
+        "event_20220915_cn": "复刻紫绛槿岚",
+        "event_20221124_cn": "复刻炼金术士与秘密遗迹群岛",
+        "event_20221222_cn": "复刻定向折叠",
+        "event_20230223_cn": "复刻湮烬尘墟",
+        "event_20230525_cn": "复刻空相交汇点",
+        "event_20230803_cn": "复刻奏响鸢尾之歌",
+        "event_20230817_cn": "复刻愚者的天平",
+        "event_20230914_cn": "须臾望月抄",
+        "event_20231026_cn": "飓风与青春之泉",
+        "event_20231123_cn": "苍闪忍法帖",
+        "event_20231221_cn": "星海逐光",
+        "event_20240229_cn": "雪境迷踪",
+        "event_20240425_cn": "共鸣的PASSION",
+        "event_20240521_cn": "绽放于辉光之城",
+        "event_20240725_cn": "幻梦间奏曲",
+        "event_20240815_cn": "铁翼擎风",
+        "event_20240829_cn": "埋葬于彼岸之花",
+        "event_20240912_cn": "唤醒苍红之炎",
+        "event_20241024_cn": "飓风与沉眠之海",
+        "event_20241121_cn": "危险发明迫近中",
+        "event_20241219_cn": "星光下的余晖",
+        "event_20250227_cn": "樊笼内的神光",
+        "event_20250424_cn": "扬起郁金之旗",
+        "event_20250520_cn": "高塔上的蔷薇",
+        "event_20250724_cn": "优米雅的炼金工房",
+        "event_20250814_cn": "奇渊下的秘密",
+        "event_20250912_cn": "起舞于天原之上",
+        "event_20251023_cn": "飓风与自由群岛",
+        "raid_20200624": "复刻特别演习埃塞克斯级",
+        "raid_20210708": "复刻穿越彼方的水线",
+        "raid_20220127": "演习神秘事件调查",
+        "raid_20220630": "来自鸢尾的天使",
+        "raid_20221027": "战斗！皇家女仆队3rd",
+        "raid_20230118": "冬日的寻路人",
+        "raid_20230629": "绿洲往事",
+        "raid_20240130": "寰昌宇定家事忙",
+        "raid_20240328": "从零开始的魔王讨伐之旅",
+        "raid_20250116": "华裳巧展喜事长",
+        "war_archives_20180607_cn": "档案 墨染的钢铁之花",
+        "war_archives_20180726_cn": "档案 光与影的鸢尾之华",
+        "war_archives_20181020_en": "档案 努力希望和计划",
+        "war_archives_20181026_en": "档案 坠落之翼",
+        "war_archives_20181227_cn": "档案 苍红的回响",
+        "war_archives_20190221_en": "档案 凛冬王冠",
+        "war_archives_20190314_en": "档案 月光下的序曲",
+        "war_archives_20190321_en": "档案 红染的参访者",
+        "war_archives_20190620_en": "档案 光荣的一战",
+        "war_archives_20190911_cn": "档案 神圣的悲喜剧",
+        "war_archives_20191010_en": "档案 围剿斯佩伯爵",
+        "war_archives_20191031_en": "档案 异色格",
+        "war_archives_20200312_cn": "档案 斯图尔特的硝烟",
+        "war_archives_20200507_cn": "档案 夜幕下的归途",
+        "war_archives_20200603_cn": "档案 峡湾间的反击",
+        "war_archives_20200806_cn": "档案 最重要的宝物",
+        "war_archives_20200820_cn": "档案 铁血音符誓言",
+        "war_archives_20200903_cn": "档案 峡湾间的星辰",
+        "war_archives_20200917_cn": "档案 蝶海梦花",
+        "war_archives_20201012_cn": "档案 划破海空之翼",
+        "war_archives_20201029_cn": "档案 激唱的UNIVERSE",
+        "war_archives_20201229_cn": "档案 负象限作战",
+        "war_archives_20210225_cn": "档案 破晓冰华",
+        "war_archives_20210325_cn": "档案 箱庭疗法",
+        "war_archives_20210422_cn": "档案 复兴的赞美诗",
+        "war_archives_20210527_cn": "档案 镜位螺旋",
+        "war_archives_20210624_cn": "档案 浮樱影华",
+        "war_archives_20210819_cn": "档案 微层混合",
+        "war_archives_20210916_cn": "档案 碧海光粼",
+        "war_archives_20211014_cn": "档案 激奏的Polaris",
+        "war_archives_20211028_cn": "档案 穹顶下的圣咏曲",
+        "war_archives_20211111_cn": "档案 杰诺瓦的焰火",
+        "war_archives_20211229_cn": "档案 逆转彩虹之塔",
+        "war_archives_20220210_cn": "档案 北境序曲",
+        "war_archives_20220224_cn": "档案 深度回音",
+        "war_archives_20220324_cn": "档案 虚像构筑之塔",
+        "war_archives_20220414_cn": "档案 永夜幻光",
+        "war_archives_20220428_cn": "档案 虹彩的终幕曲",
+        "war_archives_20220526_cn": "档案 泠誓光庭",
+        "war_archives_20220728_cn": "档案 雄鹰的叙事歌",
+        "war_archives_20220915_cn": "档案 紫绛槿岚",
+        "war_archives_20231026_cn": "档案 飓风与青春之泉"
+    },
+    "Mode": {
+        "name": "关卡模式",
+        "help": "仅适用于主线图",
+        "normal": "普通",
+        "hard": "困难"
+    },
+    "UseClearMode": {
+        "name": "使用周回模式",
+        "help": ""
+    },
+    "UseFleetLock": {
+        "name": "使用阵容锁定",
+        "help": ""
+    },
+    "UseAutoSearch": {
+        "name": "使用自律寻敌",
+        "help": ""
+    },
+    "Use2xBook": {
+        "name": "使用高效作战指令书",
+        "help": "两倍石油消耗，两次掉落结算"
+    },
+    "AmbushEvade": {
+        "name": "规避伏击",
+        "help": ""
+    }
+},
+"StopCondition": {
+    "_info": {
+        "name": "停止条件",
+        "help": "触发以下任意条件后，停止任务"
+    },
+    "OilLimit": {
+        "name": "石油低于 X 后推迟",
+        "help": "石油过低时推迟任务，石油充足后继续出击"
+    },
+    "RunCount": {
+        "name": "出击次数大于 X 后停止",
+        "help": "每运行一次，次数减一，归零后停止任务\n0 表示不限制次数"
+    },
+    "MapAchievement": {
+        "name": "达成关卡成就后停止",
+        "help": "达成地图 100% 通关，达成三星通关，达成安全海域，\n或达成安全海域但不打三星后停止",
+        "non_stop": "否",
+        "100_percent_clear": "100%通关",
+        "map_3_stars": "100%通关 + 三星",
+        "threat_safe": "100%通关 + 三星 + 安全海域",
+        "threat_safe_without_3_stars": "100%通关 + 安全海域"
+    },
+    "StageIncrease": {
+        "name": "达成关卡成就后向前开荒",
+        "help": "自动开荒，需要保证队伍有足够的强度，需要保证队伍满足关卡属性限制，并设置\"达成关卡成就后停止\"\n例如，打开本选项，并选择\"地图通关\"，将在关卡100%通关后前往下一关卡\n支持自动开荒的地图：1-1至15-4，A1至A3，B1至B3，C1至C3，D1至D3，T1至T6，SP1至SP4"
+    },
+    "GetNewShip": {
+        "name": "获得新船后停止",
+        "help": ""
+    },
+    "ReachLevel": {
+        "name": "舰船升至 X 级后停止",
+        "help": "任意等级低于 X 的舰船升级至 X 级后停止\n0 表示不限制等级"
+    }
+},
+"Fleet": {
+    "_info": {
+        "name": "出击舰队",
+        "help": ""
+    },
+    "Fleet1": {
+        "name": "一队编号",
+        "help": "",
+        "1": "1 ",
+        "2": "2 ",
+        "3": "3 ",
+        "4": "4 ",
+        "5": "5 ",
+        "6": "6 "
+    },
+    "Fleet1Formation": {
+        "name": "一队阵型",
+        "help": "",
+        "line_ahead": "单纵阵",
+        "double_line": "复纵阵",
+        "diamond": "轮形阵"
+    },
+    "Fleet1Mode": {
+        "name": "一队自律模式",
+        "help": "",
+        "combat_auto": "自律战斗",
+        "combat_manual": "手操",
+        "stand_still_in_the_middle": "中路站桩",
+        "hide_in_bottom_left": "躲左下角"
+    },
+    "Fleet1Step": {
+        "name": "一队步长",
+        "help": "活动图中限制的移动距离",
+        "2": "2 ",
+        "3": "3 ",
+        "4": "4 ",
+        "5": "5 "
+    },
+    "Fleet2": {
+        "name": "二队编号",
+        "help": "",
+        "0": "不使用",
+        "1": "1 ",
+        "2": "2 ",
+        "3": "3 ",
+        "4": "4 ",
+        "5": "5 ",
+        "6": "6 "
+    },
+    "Fleet2Formation": {
+        "name": "二队阵型",
+        "help": "",
+        "line_ahead": "单纵阵",
+        "double_line": "复纵阵",
+        "diamond": "轮形阵"
+    },
+    "Fleet2Mode": {
+        "name": "二队自律模式",
+        "help": "",
+        "combat_auto": "自律战斗",
+        "combat_manual": "手操",
+        "stand_still_in_the_middle": "中路站桩",
+        "hide_in_bottom_left": "躲左下角"
+    },
+    "Fleet2Step": {
+        "name": "二队步长",
+        "help": "活动图中限制的移动距离",
+        "2": "2 ",
+        "3": "3 ",
+        "4": "4 ",
+        "5": "5 "
+    },
+    "FleetOrder": {
+        "name": "舰队职能",
+        "help": "非自律寻敌下会捡问号和弹药\n非自律寻敌下进行4战及以下的作战时，会强制使用\"一队全清二队待机\"",
+        "fleet1_mob_fleet2_boss": "一队道中二队boss",
+        "fleet1_boss_fleet2_mob": "一队boss二队道中",
+        "fleet1_all_fleet2_standby": "一队全清二队待机",
+        "fleet1_standby_fleet2_all": "一队待机二队全清"
+    }
+},
+"Submarine": {
+    "_info": {
+        "name": "潜艇设置",
+        "help": ""
     },
     "Fleet": {
         "_info": {
@@ -2742,4 +3148,121 @@
             "ChooseFile": "选择文件"
         }
     }
+},
+"Gui": {
+    "Aside": {
+        "Install": "安装",
+        "Home": "主页",
+        "Develop": "开发",
+        "Performance": "性能",
+        "Setting": "设置",
+        "AddAlas": "新增"
+    },
+    "Button": {
+        "Start": "启动",
+        "Stop": "停止",
+        "ScrollON": "自动滚动 开",
+        "ScrollOFF": "自动滚动 关",
+        "ClearLog": "清空日志",
+        "Setting": "设置",
+        "CheckUpdate": "检查更新",
+        "ClickToUpdate": "进行更新",
+        "RetryUpdate": "重试更新",
+        "CancelUpdate": "取消更新"
+    },
+    "Toast": {
+        "DisableTranslateMode": "点击这里关闭翻译模式",
+        "ConfigSaved": "设置已保存",
+        "AlasIsRunning": "调度器已在运行中",
+        "ClickToUpdate": "有更新可用，点击这里进行更新"
+    },
+    "Status": {
+        "Running": "运行中",
+        "Inactive": "闲置",
+        "Warning": "发生错误",
+        "Updating": "等待更新"
+    },
+    "MenuAlas": {
+        "Overview": "总览",
+        "Log": "运行日志"
+    },
+    "MenuDevelop": {
+        "HomePage": "主页",
+        "Translate": "翻译",
+        "Update": "更新器",
+        "Remote": "远程控制",
+        "Utils": "工具"
+    },
+    "Overview": {
+        "Scheduler": "调度器",
+        "Log": "日志",
+        "Running": "运行中",
+        "Pending": "队列中",
+        "Waiting": "等待中",
+        "NoTask": "无任务"
+    },
+    "AddAlas": {
+        "PopupTitle": "添加新配置",
+        "NewName": "新的配置文件名",
+        "CopyFrom": "从现有的配置中复制",
+        "Confirm": "添加",
+        "FileExist": "存在同名的配置文件，请重新输入一个",
+        "InvalidChar": "配置文件名不能包含下列任何字符：.\\/:*?\"<>|",
+        "InvalidPrefixTemplate": "配置文件名不能以 template 开头",
+        "Manage": "管理"
+    },
+    "AppManage": {
+        "PageTitle": "管理配置文件",
+        "TitleNew": "添加新配置",
+        "NewName": "新的配置文件名",
+        "CopyFrom": "从现有的配置中复制",
+        "NameExist": "存在同名的配置文件，请重新输入一个",
+        "InvalidChar": "配置文件名不能包含下列任何字符：.\\/:*?\"<>|",
+        "InvalidPrefixTemplate": "配置文件名不能以 template 开头",
+        "Back": "返回",
+        "New": "添加",
+        "Import": "导入",
+        "Export": "导出",
+        "Delete": "删除",
+        "OverrideWarning": "将会覆盖现有的配置文件",
+        "ImportSuccess": "导入成功",
+        "NewSuccess": "添加成功",
+        "Name": "配置名称",
+        "Mod": "插件",
+        "Actions": "操作"
+    },
+    "Update": {
+        "UpToDate": "已是最新版本",
+        "HaveUpdate": "有新版本可用",
+        "UpdateStart": "开始更新",
+        "UpdateWait": "等待所有 Alas 完成当前任务",
+        "UpdateRun": "更新中",
+        "UpdateSuccess": "更新成功，正在重启",
+        "UpdateFailed": "更新失败，可在./log/*_gui.txt中找到错误日志",
+        "UpdateChecking": "检查更新中",
+        "UpdateCancel": "取消更新，重启 Alas 中",
+        "UpdateFinish": "更新成功，请手动重启",
+        "Local": "本地",
+        "Upstream": "上游仓库",
+        "Author": "作者",
+        "Time": "提交时间",
+        "Message": "提交信息",
+        "DisabledWarn": "更新模块未启用，你需要手动重启 Alas 进行更新",
+        "DetailedHistory": "详细提交历史"
+    },
+    "Remote": {
+        "Running": "运行中",
+        "NotRunning": "未运行，与服务器的连接断开或服务器离线",
+        "NotEnable": "未启用，在 deploy.yaml 中设置 webui 密码并启用远程控制",
+        "EntryPoint": "远程访问 url 地址:",
+        "ConfigureHint": "配置教程：",
+        "SSHNotInstall": "系统中没有 ssh 工具，请参考教程下载或安装 ssh"
+    },
+    "Text": {
+        "InvalidFeedBack": "格式错误。 示例：{0}",
+        "Clear": "清除",
+        "EnterPassword": "输入密码",
+        "ChooseFile": "选择文件"
+    }
+}
 }
